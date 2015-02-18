@@ -1,0 +1,83 @@
+//MGent Quadratic formula and circle collision 2-6-15
+#include<iostream>
+#include<math.h>
+using namespace std;
+//Variables
+double a, b, c, x, x1, x2, h1, h2, k1, k2, r1, r2, r3, res, qua, cho, dis;
+int main()
+{
+Start:
+	system("cls");
+	//Selection
+	cout<<"1. Factor an equation using the quadratic formula"<< endl;
+	cout<<"2. Find the distance between two circles"<<endl;
+	cin>>cho;
+	//quadratic formula
+	if (cho==1)
+	{
+		cout<<"You chose Factor an equation using the quadratic formula\n";
+		//inputs
+		cout<<"General quadratic function (A(x^2)+Bx+C)\n";
+		cout<<"Input A\n";
+		cin>>a;
+		cout<<"Input B\n";
+		cin>>b;
+		cout<<"Input C\n";
+		cin>>c;
+		qua=(b*b)-(4*a*c);
+		//if the discriminate equals zero, stop calculating
+		if (qua<0)
+			cout<<"No Real Solutions\n";
+		//Output
+		else if (qua==0)
+		{
+			x=(-1*b)/(2*a);
+			cout<<"The solution is "<<x<<endl;
+		}
+		else
+		{
+			x1=((-1*b)-(sqrt(qua)))/(2*a);
+			x2=((-1*b)+(sqrt(qua)))/(2*a);
+			cout<<"The solutions are "<<x1<<" and "<<x2<<endl;
+		}
+	}
+	//circle collision
+	else if (cho==2)
+	{
+		cout<<"You chose Find the distance between two circles\n";
+		//inputs
+		cout<<"Equation of a circle (((x-h)^2)+((y-k)^2)=(r^2))\n";
+		cout<<"Input h1\n";
+		cin>>h1;
+		cout<<"Input k1\n";
+		cin>>k1;
+		cout<<"Input (r1)^2\n";
+		cin>>r1;
+		cout<<"Input h2\n";
+		cin>>h2;
+		cout<<"Input k2\n";
+		cin>>k2;
+		cout<<"Input (r2)^2\n";
+		cin>>r2;
+		//distance formula and radii display
+		dis=sqrt(((h2-h1)*(h2-h1))+((k2-k1)*(k2-k1)));
+		r3=((sqrt(r1))+(sqrt(r2)));
+		//Output
+		cout<<"The distance is "<<dis<<endl;
+		cout<<"r1 = "<<sqrt(r1)<<endl;
+		cout<<"r2 = "<<sqrt(r2)<<endl;
+		cout<<"sum of radii = "<<r3<<endl;
+		if (dis<=r3)
+			cout<<"Collision\n";
+		else
+			cout<<"No Collision\n";
+	}
+	//allows restart
+	cout<<"Start Over? (Yes=1, No=2): ";
+	cin>>res;
+	if (res==1)
+		goto Start;
+	else
+		cout<<"Goodbye\n";
+		system("pause");
+}
